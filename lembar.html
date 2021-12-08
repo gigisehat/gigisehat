@@ -49,10 +49,11 @@
         <div>sedang memuat data, silahkan menunggu</div>
     </div>
     <button type="button" src="pencegahan_karies.html">Pencegahan Karies</button>
-    <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded
+    <a-scene vr-mode-ui="enabled: false; enterVRButton: #enterARButton;" renderer="logarithmicDepthBuffer: true;" embedded
         arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
         <!-- we use cors proxy to avoid cross-origin problems -->
-        <button type="button" src="pencegahan_karies.html">Pencegahan Karies</button>
+        <a id="enterARButton" href="pencegahan_karies.html"></a>
+
 
         <a-assets>
             <video src="videos/Karies_Gigi.mp4" preload="auto" id="vid" response-type="arraybuffer" loop
