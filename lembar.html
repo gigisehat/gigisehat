@@ -31,7 +31,7 @@
         renderer='antialias: true; alpha: true; precision: mediump; logarithmicDepthBuffer: true;' embedded
         arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
 
-        <!-- ini aset dari videonya -->
+        
         <script>
             //ini fungsi buat videonya jadi kalau kameranya ngga fokus marker video bakal brenti dan mulai ulang dari awal
             window.onload = function () {
@@ -53,6 +53,8 @@
                 });
             };
         </script>
+
+        <!-- ini aset dari videonya -->
         <a-assets>
             <video src="videos/Pencegahan_Karies_Gigi.mp4" preload="auto" id="vid" response-type="arraybuffer" loop
                 crossorigin webkit-playsinline autoplay playsinline>
@@ -68,6 +70,52 @@
             </a-entity>
         </a-nft>
 
+        <a-entity camera></a-entity>
+    </a-scene>
+    <!-- different scene -->
+    <a-scene vr-mode-ui="enabled: false;"
+        renderer='antialias: true; alpha: true; precision: mediump; logarithmicDepthBuffer: true;' embedded
+        arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+    
+    
+        <script>
+            //ini fungsi buat videonya jadi kalau kameranya ngga fokus marker video bakal brenti dan mulai ulang dari awal
+            window.onload = function () {
+                AFRAME.registerComponent('videohandler1', {
+                    init: function () {
+                        var marker = this.el;
+
+                        this.vid = document.querySelector("#vid1");
+
+                        marker.addEventListener('markerFound', function () {
+                            this.vid.play();
+                        }.bind(this));
+
+                        marker.addEventListener('markerLost', function () {
+                            this.vid.pause();
+                            this.vid.currentTime = 0;
+                        }.bind(this));
+                    }
+                });
+            };
+        </script>
+    
+        <!-- ini aset dari videonya -->
+        <a-assets>
+            <video src="videos/mov_bbb.mp4" preload="auto" id="vid1" response-type="arraybuffer" loop
+                crossorigin webkit-playsinline autoplay playsinline>
+            </video>
+        </a-assets>
+    
+        <!-- ini image descriptornya/gambar yang dijadiin marker untuk diarahin ARnya nanti -->
+        <a-nft videohandler1 type='nft' url='smartcity/raw/image-descriptor/infografis1' smooth="true" smoothCount="10"
+            smoothTolerance="0.01" smoothThreshold="5">
+            <a-video src="#vid" position='90 -90 -250' rotation='90 0 180' width='200' height='175'>
+            </a-video>
+            <a-entity gltf-model="gltf/gigi-berlubang.gltf" scale="50 50 50" position="120 -120 -120">
+            </a-entity>
+        </a-nft>
+    
         <a-entity camera></a-entity>
     </a-scene>
 
