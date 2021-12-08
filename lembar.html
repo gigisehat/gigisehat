@@ -7,7 +7,7 @@
             init: function () {
                 var marker = this.el;
 
-                this.vid = document.querySelector("#vid",);
+                this.vid = document.querySelector("#vid");
 
                 marker.addEventListener('markerFound', function () {
                     this.vid.play();
@@ -28,7 +28,7 @@
             init: function () {
                 var marker = this.el;
 
-                this.vid = document.querySelector("#vid1",);
+                this.vid = document.querySelector("#vid1");
 
                 marker.addEventListener('markerFound', function () {
                     this.vid.play();
@@ -72,49 +72,36 @@
     <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded
         arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
         <!-- we use cors proxy to avoid cross-origin problems -->
-        
+
         <a-assets>
-            <video src="videos/mov_bbb.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin
+            <video src="videos/Pencegahan_Karies_Gigi.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin
                 webkit-playsinline autoplay playsinline>
             </video>
             <video src="videos/Karies_Gigi.mp4" preload="auto" id="vid1" response-type="arraybuffer" loop crossorigin
                 webkit-playsinline autoplay playsinline>
             </video>
         </a-assets>
-        
-        <a-nft videohandler 
-            type="nft"
-            url="mikeylienxvitesting/image-descriptor/mata3"
-            smooth="true" 
-            smoothCount="10" 
-            smoothTolerance="0.01" 
-            smoothThreshold="5">
-            <a-video 
-                src="#vid" 
-                position='90 -90 -250' 
-                rotation='90 0 180' 
-                width='200' 
-                height='175'>
+
+        <a-nft videohandler type="nft" url="mikeylienxvitesting/image-descriptor/mata3" smooth="true" smoothCount="10"
+            smoothTolerance="0.01" smoothThreshold="5">
+            <a-video src="#vid" position='90 -90 -250' rotation='90 0 180' width='200' height='175'>
             </a-video>
-            <a-entity
-                gltf-model="gltf/gigi-berlubang.gltf"
-                scale="10 10 10" 
-                position="0 -20 -20">
-                
+            <a-entity gltf-model="gltf/Dente.gltf" scale="10 10 10" position="0 -20 -20">
+
             </a-entity>
-            
+
         </a-nft>
         <a-nft videohandler1 type="nft" url="mikeylienxvitesting/image-descriptor/gigi" smooth="true" smoothCount="10"
             smoothTolerance="0.01" smoothThreshold="5">
             <a-video src="#vid1" position='90 -90 -250' rotation='90 0 180' width='200' height='175'>
             </a-video>
             <a-entity gltf-model="gltf/gigi-berlubang.gltf" scale="10 10 10" position="0 -20 -20">
-        
+
             </a-entity>
-        
+
         </a-nft>
-        
-        
+
+
         <a-entity camera></a-entity>
     </a-scene>
 </body>
