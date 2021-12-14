@@ -49,22 +49,22 @@
         <div>sedang memuat data, silahkan menunggu</div>
     </div>
     <button type="button" src="pencegahan_karies.html">Pencegahan Karies</button>
-    <a-scene vr-mode-ui="enabled: false; enterVRButton: #enterARButton;" renderer="logarithmicDepthBuffer: true;" embedded
-        arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+    <a-scene vr-mode-ui="enabled: false; enterVRButton: #enterARButton;" renderer="logarithmicDepthBuffer: true;"
+        embedded arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
         <!-- we use cors proxy to avoid cross-origin problems -->
         <a id="enterARButton" href="pencegahan_karies.html"></a>
 
 
         <a-assets>
-            <video src="videos/Karies_Gigi.mp4" preload="auto" id="vid" response-type="arraybuffer" loop
-                crossorigin webkit-playsinline autoplay playsinline>
+            <video src="videos/Karies_Gigi.mp4" preload="auto" id="vid" response-type="arraybuffer" loop crossorigin
+                webkit-playsinline autoplay playsinline>
             </video>
         </a-assets>
 
 
         <a-nft videohandler type="nft" url="mikeylienxvitesting/image-descriptor/gigi" smooth="true" smoothCount="10"
             smoothTolerance="0.01" smoothThreshold="5">
-            <a-video src="#vid" position='90 -90 -250' rotation='90 0 180' width='200' height='175'>
+            <a-video src="#vid" position='90 -20 -250' rotation='90 0 180' width='200' height='175'>
             </a-video>
             <a-entity gltf-model="gltf/Gigi_Berlubang.gltf" scale="10 10 10" position="0 -20 -20">
 
