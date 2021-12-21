@@ -1,0 +1,43 @@
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+<script>
+    AFRAME.registerComponent('vidhandler', {
+        init: function () {
+            this.keydown = false
+            this.toggle = false;
+            this.vidNodes = document.querySelectorAll("#vid, #videonew");
+            document.addEventListener('keypress', e => {
+                this.keydown = true
+            });
+            document.addEventListener('keyup', e => {
+                this.keydown = false
+            });
+        },
+        tick: function () {
+            if (this.keydown) {
+                if (!this.toggle) {
+                    // this 'toggle' gimmick is done so that you only call .play() once while space is pressed
+                    this.toggle = true
+                    for (let i = 0; i < this.vidNodes.length; i++) {
+                        this.vidNodes[i].play();
+                    }
+                }
+
+            } else {
+                this.toggle = false
+                for (let i = 0; i < this.vidNodes.length; i++) {
+                    this.vidNodes[i].pause();
+                }
+            }
+        }
+    });
+</script>
+<a-scene vidhandler>
+    <a-assets>
+        <video id="vid" loop="true" crossorigin="anonymous"
+            src='videos/Pencegahan_Karies_Gigi.mp4'></video>
+        <video id="videonew" loop="true" crossorigin="anonymous"
+            src='videos/mov_bbb.mp4'></video>
+    </a-assets>
+    <a-plane position="-2 0 -5" width="4" height="4" material='src: #vid'></a-plane>
+    <a-plane position="2 0 -5" width="4" height="4" material='src: #videonew'></a-plane>
+</a-scene>

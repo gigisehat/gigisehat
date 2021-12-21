@@ -1,0 +1,46 @@
+<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+<script>
+    AFRAME.registerComponent('vidhandler', {
+        schema: {
+            target: { type: 'string' }
+        },
+        init: function () {
+            this.videoNodes = document.querySelectorAll(this.data.target)
+        },
+        tick: function () {
+            if (this.el.object3D.visible == true) {
+                if (!this.toggle) {
+                    this.toggle = true;
+                    for (let i = 0; i < this.videoNodes.length; i++) {
+                        this.videoNodes[i].play();
+                    }
+                }
+            } else {
+                if (this.toggle) {
+                    for (let i = 0; i < this.videoNodes.length; i++) {
+                        this.videoNodes[i].pause();
+                    }
+                    this.toggle = false;
+                }
+            }
+        }
+    });
+</script>
+<a-scene embedded arjs>
+    <a-assets>
+        <video id="vid" loop="true" crossorigin="anonymous"
+            src='videos/Pencegahan_Karies_Gigi.mp4'></video>
+        <video id="videonew" loop="true" crossorigin="anonymous"
+            src='videos/mov_bbb.mp4'></video>
+    </a-assets>
+    <a-marker preset='hiro' vidhandler="target: #vid">
+        <a-box position="-1 0 0" material='src: #vid'></a-box>
+    </a-marker>
+
+    <a-marker preset='kanji' vidhandler="target: #vid, #videonew">
+        <a-box position="-1 0 0" material='src: #vid'></a-box>
+        <a-box position="1 0 0" material='src: #videonew'></a-box>
+    </a-marker>
+    <a-entity camera></a-entity>
+</a-scene>
