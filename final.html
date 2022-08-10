@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <script>
+        AFRAME.registerComponent('vidhandler', {
+            schema: {
+                video: { type: 'selector' }
+            },
+            init: function () {
+                this.video = this.data.video
+                this.video.pause()
+            },
+            tick: function () {
+                if (this.el.object3D.visible == true) {
+                    if (!this.toggle) {
+                        this.toggle = true;
+                        this.video.play()
+                    }
+                } else {
+                    this.toggle = false;
+                    this.video.pause()
+                }
+            }
+        });
+    </script>
+
+  </head>
+  <body>
+    <a-scene 
+    mindar-image="imageTargetSrc: marker/image-descriptor/mind/targets.mind" 
+    color-space="sRGB" 
+    renderer="colorManagement: true, physicallyCorrectLights" 
+    vr-mode-ui="enabled: false" 
+    device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <video id="vid" src="videos/absesgusi.mp4" autoplay loop="true"></video>
+        <video id="vid1" src="videos/gigiberlubang.mp4" autoplay loop="true"></video>
+        <video id="vid2" src="videos/gusiberdarah.mp4" autoplay loop="true"></video>
+        <video id="vid3" src="videos/jenis_gigi.mp4" autoplay loop="true"></video>
+        <video id="vid4" src="videos/karies.mp4" autoplay loop="true"></video>
+        <video id="vid5" src="videos/menyikat.mp4" autoplay loop="true"></video>
+        <video id="vid6" src="videos/pencegahan.mp4" autoplay loop="true"></video>
+    </a-assets>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-entity mindar-image-target="targetIndex: 0" vidhandler="video: #vid" type="mind"
+      smooth="true" smoothCount="10"
+            smoothTolerance=".01" smoothThreshold="5">
+            <a-box position="0 0 0" width="1" rotation="0 0 0" material='src: #vid'></a-box>
+        </a-entity >
+
+        <a-entity mindar-image-target="targetIndex: 1" vidhandler="video: #vid1" type="mind"
+      smooth="true" smoothCount="10"
+            smoothTolerance=".01" smoothThreshold="5">
+            <a-box position="0 0 0" width="1" rotation="0 0 0" material='src: #vid1'></a-box>
+        </a-entity >
+
+        <a-entity mindar-image-target="targetIndex: 2" vidhandler="video: #vid2" type="mind"
+      smooth="true" smoothCount="10"
+            smoothTolerance=".01" smoothThreshold="5">
+            <a-box position="0 0 0" width="1" rotation="0 0 0" material='src: #vid2'></a-box>
+        </a-entity >
+
+        <a-entity mindar-image-target="targetIndex: 3" vidhandler="video: #vid3" type="mind"
+      smooth="true" smoothCount="10"
+            smoothTolerance=".01" smoothThreshold="5">
+            <a-box position="0 0 0" width="1" rotation="0 0 0" material='src: #vid3'></a-box>
+        </a-entity >
+
+        <a-entity mindar-image-target="targetIndex: 4" vidhandler="video: #vid4" type="mind"
+      smooth="true" smoothCount="10"
+            smoothTolerance=".01" smoothThreshold="5">
+            <a-box position="0 0 0" width="1" rotation="0 0 0" material='src: #vid4'></a-box>
+        </a-entity >
+        <a-entity mindar-image-target="targetIndex: 6" vidhandler="video: #vid5" type="mind"
+      smooth="true" smoothCount="10"
+            smoothTolerance=".01" smoothThreshold="5">
+            <a-box position="0 0 0" width="1" rotation="0 0 0" material='src: #vid5'></a-box>
+        </a-entity >
+        <a-entity mindar-image-target="targetIndex: 5" vidhandler="video: #vid6" type="mind"
+      smooth="true" smoothCount="10"
+            smoothTolerance=".01" smoothThreshold="5">
+            <a-box position="0 0 0" width="1" rotation="0 0 0" material='src: #vid6'></a-box>
+        </a-entity >
+    </a-scene>
+  </body>
+</html>
